@@ -1,36 +1,473 @@
-body{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: #0D0D0D;
-    color: #f9f6f6 !important;
-    overflow: hidden;
+/* ==========================
+   Reset
+========================== */
+
+* {
+  box-sizing: border-box;
 }
-.nav-tab{
-    background-color: #0D0D0D;
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: #0d0d0d;
+  color: #f9f6f6 !important;
+
+  overflow: hidden;
 }
-.logo{
-    width: 50px;
+
+img {
+  display: block;
 }
-i ,.cursor-pointer{
-    cursor: pointer;
+
+i,
+.cursor-pointer {
+  cursor: pointer;
 }
-.side-nav-menu{
-    z-index: 99;
+
+/* ==========================
+   Navigation
+========================== */
+
+.side-nav-menu {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
-.meal-layer{
+
+.nav-tab {
+  width: 250px;
+  background-color: #0d0d0d;
+}
+
+.nav-header {
+  width: 60px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 10px;
+}
+
+.logo {
+  width: 50px;
+}
+
+.nav-header-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.open-close-icon {
+  cursor: pointer;
+}
+
+.links li {
+  top: 300px;
+}
+
+/* ==========================
+   Mobile Navbar
+========================== */
+
+@media screen and (max-width: 767px) {
+  .side-nav-menu {
     width: 100%;
-    height: 100%;
-    background-color: #f9f6f6ca;
-    top: 100%;
-    transition: .5s;
-}
-.meal:hover .meal-layer{
+    left: 0 !important;
     top: 0;
-}
-.loading-screen{
-    position: absolute;
-    z-index: 999;
-    background-color: #0D0D0D;
+
     display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+
+  .nav-header {
+    width: 100%;
+    height: 60px;
+    min-height: 60px;
+
+    padding: 10px 15px !important;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+  }
+
+  .logo {
+    width: 38px;
+  }
+
+  .open-close-icon {
+    font-size: 22px !important;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .nav-header-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  /* ==========================
+       Menu
+    ========================== */
+
+  .nav-tab {
+    width: 100% !important;
+
+    min-height: auto !important;
+
+    padding: 0 20px !important;
+
+    background-color: #0d0d0d;
+
+    max-height: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    transform: translateY(-15px);
+
+    transition:
+      max-height 0.5s ease,
+      opacity 0.35s ease,
+      transform 0.4s ease,
+      padding 0.4s ease;
+  }
+
+  /* ==========================
+       Open Menu
+    ========================== */
+
+  .nav-tab.mobile-nav-open {
+    max-height: 500px;
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+    padding: 20px !important;
+  }
+
+  /* ==========================
+       Links
+    ========================== */
+
+  .links li {
+    top: 0 !important;
+
+    padding: 8px 0 !important;
+
+    opacity: 1;
+  }
+
+  /* ==========================
+       Footer
+    ========================== */
+
+  .nav-footer {
+    margin-top: 15px;
+  }
+}
+
+/* ==========================
+   Navigation Links
+========================== */
+
+.links li {
+  top: 300px;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+
+  margin-bottom: 10px;
+}
+
+/* ==========================
+   Main Content
+========================== */
+
+.main-content {
+  width: 100%;
+}
+
+/* ==========================
+   Meals
+========================== */
+
+.meal {
+  position: relative;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.meal img {
+  width: 100%;
+  display: block;
+}
+
+/* ==========================
+   Meal Hover Layer
+========================== */
+
+.meal-layer {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #f9f6f6ca;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 15px;
+
+  transition: 0.5s;
+}
+
+.meal:hover .meal-layer {
+  top: 0;
+}
+
+.meal-layer h3 {
+  margin: 0;
+}
+
+/* ==========================
+   Loading Screen
+========================== */
+
+.loading-screen {
+  position: fixed;
+
+  z-index: 999;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: #0d0d0d;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==========================
+   Search
+========================== */
+
+#search {
+  padding-top: 20px;
+}
+
+/* ==========================
+   Contact
+========================== */
+
+.contact {
+  width: 100%;
+}
+
+/* ==================================================
+   Mobile
+================================================== */
+
+@media screen and (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ==========================
+       Top Navbar
+    ========================== */
+
+  .side-nav-menu {
+    width: 100%;
+    height: auto;
+
+    left: 0 !important;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ==========================
+       Navbar Header
+    ========================== */
+
+  .nav-header {
+    width: 100%;
+    height: 60px;
+    min-height: 60px;
+
+    padding: 10px 15px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 38px;
+  }
+
+  .open-close-icon {
+    font-size: 22px !important;
+
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .nav-header-icons {
+    display: flex;
+    flex-direction: row;
+
+    gap: 12px;
+  }
+
+  .nav-header-icons i {
+    font-size: 14px;
+  }
+
+  /* ==========================
+       Mobile Menu
+    ========================== */
+
+  .nav-tab {
+    width: 100% !important;
+
+    min-height: auto !important;
+
+    padding: 20px !important;
+
+    display: none !important;
+
+    background-color: #0d0d0d;
+  }
+
+  /* Open Menu */
+
+  .nav-tab.mobile-nav-open {
+    display: flex !important;
+  }
+
+  /* ==========================
+       Links
+    ========================== */
+
+  .links li {
+    top: 0;
+
+    padding: 8px 0 !important;
+
+    font-size: 16px;
+  }
+
+  /* ==========================
+       Footer
+    ========================== */
+
+  .nav-footer {
+    margin-top: 10px;
+
+    font-size: 12px;
+  }
+
+  /* ==========================
+       Main Content
+    ========================== */
+
+  .main-content {
+    padding-top: 60px;
+  }
+
+  #search {
+    width: 90% !important;
+  }
+
+  /* ==========================
+       Meals
+    ========================== */
+
+  #details {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #details .col-md-3 {
+    width: 100%;
+  }
+
+  /* ==========================
+       Meal Details
+    ========================== */
+
+  #details .col-md-4,
+  #details .col-md-8 {
+    width: 100%;
+  }
+
+  /* ==========================
+       Contact
+    ========================== */
+
+  .contact {
+    min-height: auto !important;
+
+    padding: 30px 0;
+  }
+}
+
+/* ==================================================
+   Small Mobile
+================================================== */
+
+@media screen and (max-width: 480px) {
+  .nav-header {
+    height: 55px;
+    min-height: 55px;
+  }
+
+  .main-content {
+    padding-top: 55px;
+  }
+
+  .logo {
+    width: 35px;
+  }
+
+  .open-close-icon {
+    font-size: 20px !important;
+  }
+
+  .links li {
+    font-size: 15px;
+  }
 }
